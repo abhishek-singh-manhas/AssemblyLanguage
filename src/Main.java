@@ -10,6 +10,7 @@ public class Main {
         System.out.println("'ADD' to add the values of register");
         System.out.println("'SHOW' to see the result of a register");
         System.out.println("'EXIT' or 'QUIT' to terminate the program");
+        System.out.println("'SHOWALL' This will display all the registers");
         boolean flag = true;
         assemblyProgram.registers = readFromFile();
         while(flag){
@@ -27,6 +28,11 @@ public class Main {
                 case "SHOW" -> {
                     assemblyProgram.executeProgram(new Instruction(Operation.SHOW, new String[]{word[1]}));
                     storeRegisterValues(assemblyProgram.registers);
+                }
+                case "SHOWALL" -> {
+                    for (Map.Entry<String, Integer> entry : assemblyProgram.registers.entrySet()){
+                        System.out.println(entry.getKey()+":"+entry.getValue());
+                    }
                 }
                 case "EXIT","QUIT","-1" -> {
                     flag = false;
