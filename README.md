@@ -35,7 +35,9 @@ SHOW REG1
 SHOW REG2
 ```
 The above statements will show the value present in the corresponding registers.
+- SHOWALL: Display all the registers
 - EXIT or QUIT: Terminate the program
+
 3. Enter the desired command and follow the prompts to perform operations on registers.
 4. The current register values are stored in a file named register_values.txt.
 5. The program will continue running until the user enters the EXIT or QUIT command.
