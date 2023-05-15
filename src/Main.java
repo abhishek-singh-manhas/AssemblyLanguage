@@ -55,7 +55,7 @@ public class Main {
             e.printStackTrace();
         }
     }
-    private static HashMap readFromFile() throws IOException {
+    private static HashMap<String,Integer> readFromFile() throws IOException {
         HashMap<String, Integer> map = new HashMap<>();
         BufferedReader reader = new BufferedReader(new FileReader("register_values.txt"));
         String line;
