@@ -39,7 +39,7 @@ public class Main {
                     System.out.println("This program has been terminated");
                 }
                 default ->
-                        throw new IllegalStateException("Unexpected value: " + word[0]);
+                        System.out.println("Unexpected value: " + word[0]);
             }
         }
     }
