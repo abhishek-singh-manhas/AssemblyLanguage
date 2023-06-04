@@ -3,13 +3,29 @@ import java.io.IOException;
 import java.util.HashMap;
 public class AssemblyProgram {
     HashMap<String,Integer> registers =  new HashMap<>();
-
+    boolean flag_toPrint= true;
     public void executeProgram(Instruction instruction) {
+        if(flag_toPrint) {
             switch (instruction.operation) {
                 case MV -> mvInstruction(instruction.operands);
                 case ADD -> addInstruction(instruction.operands);
                 case SHOW -> showInstruction(instruction.operands);
+                case IFGT -> ifGreaterThan(instruction.operands);
             }
+        }
+        else
+            System.out.println("Sorry!! can't execute any command");
+    }
+    public void endIfFunction(){
+        this.flag_toPrint=true;
+    }
+
+    private void ifGreaterThan(String[] operands) {
+        String reg=operands[0];
+        int value_for_comparison = Integer.parseInt(operands[1]);
+        if(registers.get(reg) < value_for_comparison){
+            this.flag_toPrint = false;
+        }
     }
 
     private void mvInstruction(String[] operands) {
@@ -42,10 +58,10 @@ public class AssemblyProgram {
 
     private void showInstruction(String[] operands) {
         String reg = operands[0];
-        if(registers.containsKey(reg))
+        if(registers.containsKey(reg)&& flag_toPrint)
             System.out.println(reg + ":" + registers.get(reg));
         else
-            System.out.println("No such register exists");
+            System.out.println("This register doesn't exist");
     }
 
 }

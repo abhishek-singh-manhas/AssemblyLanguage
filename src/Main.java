@@ -34,6 +34,14 @@ public class Main {
                         System.out.println(entry.getKey()+":"+entry.getValue());
                     }
                 }
+                case "IFGT" -> {
+                    assemblyProgram.executeProgram(new Instruction(Operation.IFGT,new String[]{word[1], word[2]}));
+                    storeRegisterValues(assemblyProgram.registers);
+                }
+                case "ENDIF"->{
+                    assemblyProgram.endIfFunction();
+                    storeRegisterValues(assemblyProgram.registers);
+                }
                 case "EXIT","QUIT","-1" -> {
                     flag = false;
                     System.out.println("This program has been terminated");
